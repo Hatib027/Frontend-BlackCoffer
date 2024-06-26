@@ -1,0 +1,37 @@
+<mat-toolbar class="mat-elevation-z8">
+  
+    <button 
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+
+<div class="sm"> BlackCoffer</div>
+   
+
+
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav  #sidenav="matSidenav" class="mat-elevation-z8">
+        <img class="avatar mat-elevation-z8"
+        src="https://www.pngfind.com/pngs/m/34-349693_circled-user-icon-transparent-background-username-icon-hd.png" />
+
+  
+
+
+
+
+
+
+    
+    </mat-sidenav>
+    <mat-sidenav-content>
+    
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>

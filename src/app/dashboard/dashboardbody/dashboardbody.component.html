@@ -1,0 +1,231 @@
+<div class="container-fluid mt-20">
+
+    <mat-card class="mb-20" style=" box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.5);">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1 style="display: none;">{{backedData[6].country}}</h1>
+
+                <app-relevance-chart [backedData]="backedData"></app-relevance-chart>
+            </div>
+          <div class="col-md-6">
+            <h1 style="display: none;">{{backedData[6].country}}</h1>
+    
+            <app-intensity-chart [backedData]="backedData"></app-intensity-chart>
+          </div>
+        
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 "  style="margin: 10px;justify-content: center;margin: auto;margin-bottom: 40px;">
+                <h1 style="display: none;">{{backedData[6].country}}</h1>
+        
+                <app-likelihood-chart [backedData]="backedData"></app-likelihood-chart>
+              </div>
+          
+        </div>
+        
+        <div class="container-fluid">
+          <mat-expansion-panel style="margin-bottom: 20px;">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-weight: bolder;" class="head">
+                Filter
+              </mat-panel-title>
+           
+            </mat-expansion-panel-header>
+        
+          <div class="container-fluid">
+
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+                        <mat-label>Topic</mat-label>
+                        <input  [(ngModel)]="topics" (ngModelChange)="filterData()"  name="topics" matInput
+                            placeholder="Enter here">
+            
+            
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+                        <mat-label>Pestle</mat-label>
+                        <input  [(ngModel)]="pestle" (ngModelChange)="filterData()" name="pestle" matInput 
+                            placeholder="Enter here">
+            
+            
+                    </mat-form-field>
+                </div>
+
+              
+</div></div>
+<div class="container-fluid">
+
+
+  <div class="row">
+
+      <div class="col-md-6">
+          <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+              <mat-label>Sector</mat-label>
+              <input  [(ngModel)]="sector" (ngModelChange)="filterData()"  name="sector" matInput
+                  placeholder="Enter here">
+  
+  
+          </mat-form-field>
+      </div>
+      <div class="col-md-6">
+          <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+              <mat-label>Region</mat-label>
+              <input  [(ngModel)]="region" (ngModelChange)="filterData()"  name="region" matInput
+                  placeholder="Enter here">
+  
+  
+          </mat-form-field>
+      </div>
+
+    
+</div></div>
+<div class="container-fluid">
+
+
+  <div class="row">
+
+      <div class="col-md-6">
+          <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+              <mat-label>Source</mat-label>
+              <input  [(ngModel)]="source" (ngModelChange)="filterData()"  name="source" matInput
+                  placeholder="Enter here">
+  
+  
+          </mat-form-field>
+      </div>
+      <div class="col-md-6">
+          <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+              <mat-label>Country</mat-label>
+              <input  [(ngModel)]="country" (ngModelChange)="filterData()"  name="country" matInput
+                  placeholder="Enter here">
+  
+  
+          </mat-form-field>
+      </div>
+    
+
+    
+</div></div>
+<div class="container-fluid">
+
+
+  <div class="row">
+
+      <div class="col-md-6">
+          <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+              <mat-label>Swot</mat-label>
+              <input  [(ngModel)]="swot" (ngModelChange)="filterData()"  name="swot" matInput
+                  placeholder="Enter here">
+  
+  
+          </mat-form-field>
+      </div>
+      <div class="col-md-6">
+          <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+              <mat-label>City</mat-label>
+              <input  [(ngModel)]="city" (ngModelChange)="filterData()"  name="city" matInput
+                  placeholder="Enter here">
+  
+  
+          </mat-form-field>
+      </div>
+     
+    
+
+    
+</div></div>
+<div class="container-fluid">
+
+
+  <div class="row">
+
+      <div class="col-md-12">
+          <mat-form-field class="full-width"  (required)="true"  appearance="outline">
+              <mat-label>End-Year</mat-label>
+              <input  [(ngModel)]="endYear" (ngModelChange)="filterData()"  name="endYear" matInput type="number"
+                  placeholder="Enter here">
+  
+  
+          </mat-form-field>
+      </div>
+      
+     
+    
+
+    
+</div></div>
+
+
+</mat-expansion-panel>
+          <div class="mc">
+            <h3 class="head-3">BlackCoffer Data</h3>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Sr.no</th>
+                  
+                    <th>Topic</th>
+                    <th>Pestle</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Intensity</th>
+                    <th>sector</th>
+                    <th>region</th>
+                    <th>Start</th>
+                    <th>Source</th>
+                    <th>Swot</th>
+                    <th>End-Year</th>
+                    <th>Relevance</th>
+                    <th>Likelihood</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of  this.backedDataFilter|paginate : {itemsPerPage : tableSize,currentPage:page,totalItems:count},let i=index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ data.topics }}</td>
+                    <td>{{ data.pestle }}</td>
+                    <td>{{ data.country!=''? data.country : 'Not Provided' }}</td>
+                    <td>{{ data.city!=''? data.city : 'Not Provided' }}</td>
+                    <td>{{ data.intensity }}</td>
+                    <td>{{ data.sector!=''? data.sector : 'Not Provided'}}</td>
+                    <td>{{ data.region!=''? data.region : 'Not Provided'}}</td>
+                    <td>{{ data.startYear!=''? data.startYear : 'Not Provided'}}</td>
+                    <td>{{ data.source!=''? data.source : 'Not Provided'}}</td>
+                    <td>{{ data.swot!=''? data.swot : 'Not Provided'}}</td>
+                    <td>{{ data.endYear!=''? data.endYear : 'Not Provided'}}</td>
+                    <td>{{ data.relevance!=''? data.relevance : 'Not Provided'}}</td>
+                    <td>{{ data.likelihood!=''? data.likelihood : 'Not Provided'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="margin-left: 46px;" class="mt20">
+
+                <pagination-controls  style="color: #001b3a;" class="ngx-pagination" previousLabel="Prev"
+                    nextLabel="next" (pageChange)="onTableDataChange($event)">
+
+
+
+                </pagination-controls>
+
+
+
+            </div>
+            </div>
+          </div>
+        </div>
+        
+        
+    </mat-card>
+
+
+ 
+
+</div>
